@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Love — Valentine's Day 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: linear-gradient(135deg, #f5f3f0 0%, #e8e4df 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating petals background */
+        .petal {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50% 0 50% 0;
+            opacity: 0;
+            animation: float 15s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Envelope container */
+        .envelope-container {
+            position: relative;
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.8s ease;
+        }
+
+        .envelope-container.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .envelope {
+            width: 320px;
+            height: 200px;
+            background: linear-gradient(135deg, #f8f6f3 0%, #ede9e4 100%);
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .envelope h2 {
+            font-size: 24px;
+            color: #5a5045;
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .open-button {
+            background: linear-gradient(135deg, #8b7355 0%, #6b5644 100%);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-family: Georgia, serif;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(107, 86, 68, 0.3);
+        }
+
+        .open-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 86, 68, 0.4);
+        }
+
+        /* Letter container */
+        .letter-container {
+            max-width: 700px;
+            width: 100%;
+            background: linear-gradient(135deg, #fffefb 0%, #f9f7f3 100%);
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            padding: 50px 40px;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            pointer-events: none;
+        }
+
+        .letter-container.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .lily-svg {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            display: block;
+            opacity: 0;
+            animation: fadeIn 1.5s ease 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #5a5045;
+            margin-bottom: 30px;
+            font-weight: 400;
+            text-align: center;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .letter-content {
+            color: #4a4039;
+            line-height: 1.9;
+            font-size: 17px;
+        }
+
+        .letter-content p {
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+
+        .reasons {
+            margin: 35px 0;
+            padding: 25px;
+            background: rgba(232, 228, 223, 0.3);
+            border-radius: 8px;
+            border-left: 3px solid #d4af37;
+        }
+
+        .reasons h3 {
+            font-size: 20px;
+            color: #5a5045;
+            margin-bottom: 18px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .reasons ul {
+            list-style: none;
+        }
+
+        .reasons li {
+            margin-bottom: 14px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .reasons li::before {
+            content: '♡';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-size: 18px;
+        }
+
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-style: italic;
+            font-size: 19px;
+            color: #5a5045;
+            line-height: 1.6;
+        }
+
+        .surprise-button {
+            background: linear-gradient(135deg, #d4af37 0%, #b8932f 100%);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 15px;
+            font-family: Georgia, serif;
+            border-radius: 30px;
+            cursor: pointer;
+            display: block;
+            margin: 35px auto 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .surprise-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .surprise-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease, margin 0.6s ease;
+            margin-top: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-radius: 8px;
+            padding: 0 25px;
+            text-align: center;
+            font-style: italic;
+            color: #5a5045;
+            line-height: 1.8;
+        }
+
+        .surprise-message.visible {
+            max-height: 200px;
+            margin-top: 25px;
+            padding: 20px 25px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #8b7355;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .letter-content {
+                font-size: 16px;
+            }
+
+            .envelope {
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating petals -->
+    <div class="petal" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="petal" style="left: 25%; animation-delay: 3s;"></div>
+    <div class="petal" style="left: 40%; animation-delay: 6s;"></div>
+    <div class="petal" style="left: 55%; animation-delay: 9s;"></div>
+    <div class="petal" style="left: 70%; animation-delay: 12s;"></div>
+    <div class="petal" style="left: 85%; animation-delay: 4s;"></div>
+    <div class="petal" style="left: 15%; animation-delay: 7s;"></div>
+    <div class="petal" style="left: 60%; animation-delay: 2s;"></div>
+
+    <!-- Envelope -->
+    <div class="envelope-container" id="envelope">
+        <div class="envelope">
+            <h2>For My Beloved</h2>
+            <button class="open-button" onclick="openLetter()">Open my letter ❤️</button>
+        </div>
+    </div>
+
+    <!-- Letter -->
+    <div class="letter-container" id="letter">
+        <!-- SVG Lily illustration -->
+        <svg class="lily-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <!-- Stem -->
+                <path d="M50 95 L50 45" stroke="#6b8e5f" stroke-width="2" fill="none"/>
+                <!-- Leaves -->
+                <path d="M50 70 Q35 75 30 72" stroke="#6b8e5f" stroke-width="1.5" fill="none"/>
+                <path d="M50 65 Q65 70 70 67" stroke="#6b8e5f" stroke-width="1.5" fill="none"/>
+                <!-- Petals -->
+                <ellipse cx="50" cy="35" rx="8" ry="20" fill="#fffef8" stroke="#e8e4df" stroke-width="1"/>
+                <ellipse cx="50" cy="35" rx="8" ry="20" fill="#fffef8" stroke="#e8e4df" stroke-width="1" transform="rotate(60 50 35)"/>
+                <ellipse cx="50" cy="35" rx="8" ry="20" fill="#fffef8" stroke="#e8e4df" stroke-width="1" transform="rotate(120 50 35)"/>
+                <ellipse cx="50" cy="35" rx="8" ry="20" fill="#fffef8" stroke="#e8e4df" stroke-width="1" transform="rotate(180 50 35)"/>
+                <ellipse cx="50" cy="35" rx="8" ry="20" fill="#fffef8" stroke="#e8e4df" stroke-width="1" transform="rotate(240 50 35)"/>
+                <ellipse cx="50" cy="35" rx="8" ry="20" fill="#fffef8" stroke="#e8e4df" stroke-width="1" transform="rotate(300 50 35)"/>
+                <!-- Center -->
+                <circle cx="50" cy="35" r="4" fill="#d4af37"/>
+            </g>
+        </svg>
+
+        <h1>To my love,</h1>
+
+        <div class="letter-content">
+            <!-- 
+            ============================================
+            EDIT YOUR LETTER CONTENT BELOW
+            ============================================
+            -->
+            
+            <p>As I write these words, my heart overflows with a love so deep that it transcends any single moment, any date on a calendar. You are, and always will be, my Valentine — not just today, but every single day we share together.</p>
+
+            <p>You love lilies, and when I see them, I think of you. Their elegance, their quiet strength, the way they bloom so beautifully — it reminds me of the incredible human being you are. You carry yourself with such grace, and yet beneath that gentleness lies a willpower and strength that leaves me in awe.</p>
+
+            <p>I am deeply grateful for you. Grateful for every morning I wake up beside you, for every challenge we face together, for every dream we build side by side. Sharing this life with you is the greatest gift I have ever received, and I never take it for granted.</p>
+
+            <p>I admire you more than words can express. Your determination inspires me every day. You never give up, no matter how difficult the path becomes. Watching you pursue your career, seeing the dedication you pour into your work, the way you rise to every challenge — I am so incredibly proud of you. Your success is not just yours; it is a reflection of who you are at your core: resilient, brilliant, and unstoppable.</p>
+
+            <div class="reasons">
+                <h3>Reasons I Love You</h3>
+                <ul>
+                    <li>Your unwavering strength in the face of adversity reminds me that anything is possible when you have the courage to keep going.</li>
+                    <li>The way you care for others with such depth and compassion, always putting your heart into everything you do.</li>
+                    <li>Your ability to dream big and then work tirelessly to turn those dreams into reality — you inspire me to be better every day.</li>
+                    <li>The quiet moments we share, where no words are needed, and I feel completely understood and at peace.</li>
+                    <li>How you love me, even on days when I feel undeserving — you see the best in me and believe in us with your whole heart.</li>
+                </ul>
+            </div>
+
+            <p>I want you to know that my love for you goes beyond a date on a calendar. February 14th is beautiful, yes, but it is only one day. I will cherish you every single day — not just today, not just tomorrow, but for all the tomorrows we have ahead of us. You deserve to be celebrated not once a year, but always, because that is what you mean to me: everything.</p>
+
+            <p>You are my partner, my best friend, my home. I respect you deeply, I admire your spirit, and I am endlessly proud to stand beside you as you conquer the world. Thank you for being you. Thank you for choosing me. Thank you for this life we are building together, one beautiful day at a time.</p>
+
+            <p class="signature">Forever yours,<br>Your Husband</p>
+            
+            <!-- 
+            ============================================
+            END OF EDITABLE CONTENT
+            Replace "Your Husband" with your actual name
+            ============================================
+            -->
+        </div>
+
+        <button class="surprise-button" onclick="showSurprise()">Tap for a surprise 💕</button>
+
+        <div class="surprise-message" id="surprise">
+            <!-- 
+            ============================================
+            EDIT YOUR SURPRISE MESSAGE BELOW
+            ============================================
+            -->
+            Every time I look at you, I fall in love all over again. You are my everything, today and always. I promise to love you fiercely, support you endlessly, and stand by your side through every season of life. You are my forever.
+            <!-- 
+            ============================================
+            END OF SURPRISE MESSAGE
+            ============================================
+            -->
+        </div>
+
+        <footer>Made with love — Valentine's Day 2026</footer>
+    </div>
+
+    <script>
+        function openLetter() {
+            document.getElementById('envelope').classList.add('hidden');
+            setTimeout(() => {
+                document.getElementById('letter').classList.add('visible');
+            }, 400);
+        }
+
+        function showSurprise() {
+            const surprise = document.getElementById('surprise');
+            surprise.classList.toggle('visible');
+        }
+    </script>
+</body>
+</html>
+
+<!-- 
+============================================
+HOW TO PUBLISH THIS ON GITHUB PAGES
+============================================
+
+Step 1: Create a GitHub account (if you don't have one)
+   Go to github.com and sign up for free
+
+Step 2: Create a new repository
+   - Click the "+" icon in the top right
+   - Select "New repository"
+   - Name it: "valentine-letter" (or any name you like)
+   - Make it PUBLIC
+   - Click "Create repository"
+
+Step 3: Upload this file
+   - In your new repository, click "uploading an existing file"
+   - Drag and drop this index.html file
+   - Click "Commit changes"
+
+Step 4: Enable GitHub Pages
+   - Go to your repository Settings
+   - Scroll down to "Pages" in the left sidebar
+   - Under "Source", select "main" branch
+   - Click "Save"
+
+Step 5: Access your website
+   - Wait 1-2 minutes for deployment
+   - Your site will be live at:
+     https://YOUR-USERNAME.github.io/valentine-letter/
+   - Share this link with your wife!
+
+Note: Replace YOUR-USERNAME with your actual GitHub username
+============================================
+-->
